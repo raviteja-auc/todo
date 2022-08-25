@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                sh 'npm -v'
+                sh 'npioiom -v'
                 
             }
 
