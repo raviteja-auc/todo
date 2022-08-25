@@ -1,11 +1,6 @@
 pipeline {
     agent any
 
-    triggers {
-        pollSCM 'H/5 * * * *'
-    }
-
-
     stages {
         stage('checkout') {
             steps {
@@ -16,6 +11,10 @@ pipeline {
             post {
                 success {
                     echo 'Checkout is successful'
+                }
+
+                failure {
+                    echo "Checkout is unsuccessful"
                 }
             }
         }
