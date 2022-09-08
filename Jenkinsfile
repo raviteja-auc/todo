@@ -5,6 +5,7 @@ pipeline {
         stage('checkout') {
             steps {
                 sh 'npm -v'
+                sh 'echo "SUCCESS" > testim.txt'
             }
 
             post {
