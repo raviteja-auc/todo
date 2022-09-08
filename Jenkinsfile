@@ -6,6 +6,8 @@ pipeline {
             steps {
                 sh 'npm -v'
                 sh 'echo "SUCCESS" > testim.txt'
+                sh 'git config user.name "Ravi Teja Natchireddi"'
+                sh 'git config user.email ravi@authorcafe.com'
                 sh 'git commit -am "testim report"'
                 sh 'git push'
             }
