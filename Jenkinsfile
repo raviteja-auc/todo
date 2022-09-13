@@ -9,12 +9,15 @@ pipeline {
                     sh 'npm -v'
                     sh 'git config user.name "Ravi Teja Natchireddi"'
                     sh 'git config user.email ravi@authorcafe.com'
-                    // sh 'git checkout master'
+                    checkout([$class: 'GitSCM',
+                            branches: [[name: 'master']],
+                            userRemoteConfigs: [[credentialsId: 'ci-credentials',
+                            url: 'https://github.com/raviteja-auc/todo.git']]])
                     sh 'echo "SUCCESS" > testim.txt'
                     sh 'git add .'
                     sh 'git commit -m "testim report"'
-                    // sh 'git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/raviteja-auc/todo.git'
-                    gitPush(gitScm: { userRemoteConfigs: {url: "https://www.github.com/raviteja-auc/todo.git"}})
+                    sh 'git push'
+                    
                 }
                 
             }
