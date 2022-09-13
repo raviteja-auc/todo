@@ -19,7 +19,7 @@ pipeline {
                     sh 'echo "SUCCESS" > testim.txt'
                     sh 'git add .'
                     sh 'git commit -m "testim report"'
-                    sh 'git push https://${encodedUser}:${encodedPass}@github.org/raviteja-auc/todo.git'
+                    sh 'git push https://${encodedUser}:${encodedPass}@github.com/raviteja-auc/todo.git'
                     
                 }
                 
