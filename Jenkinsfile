@@ -7,13 +7,14 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'ci-credentials', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                     
                     sh 'npm -v'
-                    sh 'git config user.name "Ravi Teja Natchireddi"'
-                    sh 'git config user.email ravi@authorcafe.com'
+                    
                     deleteDir()
                     checkout([$class: 'GitSCM',
                             branches: [[name: 'master']],
                             userRemoteConfigs: [[credentialsId: 'ci-credentials',
                             url: 'https://github.com/raviteja-auc/todo.git']]])
+                    sh 'git config user.name "Ravi Teja Natchireddi"'
+                    sh 'git config user.email ravi@authorcafe.com'
                     sh 'git checkout master'
                     sh 'echo "SUCCESS" > testim.txt'
                     sh 'git add .'
