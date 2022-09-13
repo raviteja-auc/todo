@@ -19,7 +19,7 @@ pipeline {
                     sh 'echo "SUCCESS" > testim.txt'
                     sh 'git add .'
                     sh 'git commit -m "testim report"'
-                    sh 'git push'
+                    sh 'git push origin master'
                     
                 }
                 
