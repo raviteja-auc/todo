@@ -14,7 +14,7 @@ pipeline {
                     sh 'git add .'
                     sh 'git commit -m "testim report"'
                     // sh 'git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/raviteja-auc/todo.git'
-                    gitPush()
+                    gitPush("https://www.github.com/raviteja-auc/todo.git")
                 }
                 
             }
