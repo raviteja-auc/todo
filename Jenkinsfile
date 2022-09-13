@@ -15,7 +15,7 @@ pipeline {
                     sh 'git config user.email ravi@authorcafe.com'
                     sh 'git add .'
                     sh 'git commit -m "testim report"'
-                    sh 'git push https://${encodedUser}:${encodedPass}@github.com/raviteja-auc/todo.git HEAD:master'
+                    sh 'git push https://raviteja-auc:${encodedPass}@github.com/raviteja-auc/todo.git HEAD:master'
                 }
                 
             }
