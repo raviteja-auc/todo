@@ -13,6 +13,7 @@ pipeline {
                             branches: [[name: 'master']],
                             userRemoteConfigs: [[credentialsId: 'ci-credentials',
                             url: 'https://github.com/raviteja-auc/todo.git']]])
+                    sh 'git checkout master'
                     sh 'echo "SUCCESS" > testim.txt'
                     sh 'git add .'
                     sh 'git commit -m "testim report"'
