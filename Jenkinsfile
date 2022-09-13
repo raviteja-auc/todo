@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'GitHub-credentials', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                withCredentials([usernamePassword(credentialsId: 'ci-credentials', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                     script {
                     env.encodedPass=URLEncoder.encode(GIT_PASSWORD, "UTF-8")
                     env.encodedUser=URLEncoder.encode(GIT_USERNAME, "UTF-8")
@@ -15,7 +15,7 @@ pipeline {
                     sh 'git config user.email ravi@authorcafe.com'
                     sh 'git add .'
                     sh 'git commit -m "testim report"'
-                    sh 'git push https://raviteja-auc:${encodedPass}@github.com/raviteja-auc/todo.git HEAD:master'
+                    sh 'git push https://${encodedUser}:${encodedPass}@github.com/raviteja-auc/todo.git HEAD:master'
                 }
                 
             }
