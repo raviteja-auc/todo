@@ -14,7 +14,7 @@ pipeline {
                     sh 'git add .'
                     sh 'git commit -m "testim report"'
                     // sh 'git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/raviteja-auc/todo.git'
-                    checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/jenkinsci/git-plugin.git']]])
+                    push([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/jenkinsci/git-plugin.git']]])
                 }
                 
             }
