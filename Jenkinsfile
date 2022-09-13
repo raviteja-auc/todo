@@ -9,6 +9,7 @@ pipeline {
                     sh 'npm -v'
                     sh 'git config user.name "Ravi Teja Natchireddi"'
                     sh 'git config user.email ravi@authorcafe.com'
+                    deleteDir()
                     checkout([$class: 'GitSCM',
                             branches: [[name: 'master']],
                             userRemoteConfigs: [[credentialsId: 'ci-credentials',
