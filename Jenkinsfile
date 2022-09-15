@@ -25,7 +25,7 @@ pipeline {
                     // sh "echo ${env.BUILD_NUMBER} > build-log.txt"
 
                     sh "pwd"
-                    sh "cd .${env.JENKINS_HOME}"
+                    sh "cd ${env.JENKINS_HOME}"
                     sh "pwd"
                     
                 }
