@@ -21,7 +21,7 @@ pipeline {
                     // sh 'git commit -m "testim report"'
                     // sh 'git push git@github.com:raviteja-auc/todo.git'
 
-                    echo "${BUILD_LOG}"
+                    echo "${env.BUILD_LOG}"
                     
                 }
                 
