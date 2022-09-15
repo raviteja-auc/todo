@@ -21,7 +21,7 @@ pipeline {
                     // sh 'git commit -m "testim report"'
                     // sh 'git push git@github.com:raviteja-auc/todo.git'
 
-                    echo "${env.BUILD_URL}"
+                    cat "/var/jenkins_home/jobs/${env.JOB_NAME}/branches/${env.BRANCH_NAME}/builds/${env.BUILD_NUMBER}"
                     
                 }
                 
