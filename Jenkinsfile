@@ -25,6 +25,8 @@ pipeline {
                     // sh "echo ${env.BUILD_NUMBER} > build-log.txt"
 
                     sh "pwd"
+                    sh "cd ../../jobs/${env.JOB_NAME}/branches/${env.BRANCH_NAME}/builds/"
+                    sh "pwd"
                     
                 }
                 
