@@ -21,8 +21,10 @@ pipeline {
                     // sh 'git commit -m "testim report"'
                     // sh 'git push git@github.com:raviteja-auc/todo.git'
 
-                    sh "cd /var/jenkins_home/jobs/${env.JOB_NAME}/branches/${env.BRANCH_NAME}/builds/"
-                    sh "echo ${env.BUILD_NUMBER} > build-log.txt"
+                    // sh "cd /var/jenkins_home/jobs/${env.JOB_NAME}/branches/${env.BRANCH_NAME}/builds/"
+                    // sh "echo ${env.BUILD_NUMBER} > build-log.txt"
+
+                    sh "pwd"
                     
                 }
                 
