@@ -25,7 +25,7 @@ pipeline {
                     // sh "echo ${env.BUILD_NUMBER} > build-log.txt"
 
                     sh "pwd"
-                    sh "cat ${env.JENKINS_HOME}/jobs/${env.JOB_NAME}/branches/${env.BRANCH_NAME}/builds/59/log"
+                    sh "ls ${env.JENKINS_HOME}/jobs/${env.JOB_NAME}/branches/${env.BRANCH_NAME}/builds/${env.BUILD_NUMBER}"
                     sh "pwd"
                     
                 }
