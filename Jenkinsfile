@@ -21,7 +21,7 @@ pipeline {
                     // sh 'git commit -m "testim report"'
                     // sh 'git push git@github.com:raviteja-auc/todo.git'
 
-                    currentBuild.changeSets()
+                    sh '${currentBuild.changeSets()}'
                     
                 }
                 
