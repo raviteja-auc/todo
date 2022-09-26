@@ -30,7 +30,7 @@ pipeline {
                     sh "cat ${env.JENKINS_HOME}/testim-results/testim.txt"
                     // sh "if [ $(< ${env.JENKINS_HOME}/testim-results/testim.txt) != 'SUCCESS' ]; then echo 'hello'; fi"
                     sh "cat ${env.JENKINS_HOME}/testim-results/testim.txt > testim-result.txt"
-                    sh "if [[ $(< testim-result.txt) != 'SUCCESS' ]]; then echo hello; fi"
+                    sh 'if [ "$(< testim-result.txt)" != "SUCCESS" ]; then echo hello; fi'
                 }
                 
             }
