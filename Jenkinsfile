@@ -24,9 +24,10 @@ pipeline {
                     // sh "cd /var/jenkins_home/jobs/${env.JOB_NAME}/branches/${env.BRANCH_NAME}/builds/"
                     // sh "echo ${env.BUILD_NUMBER} > build-log.txt"
 
-                    sh "pwd"
-                    sh "cat ${env.JENKINS_HOME}/jobs/todo-pipeline/branches/${env.BRANCH_NAME}/builds/${env.BUILD_NUMBER}/log > build-log.txt"
-                    sh "pwd"
+                    sh 'echo "Failed" > testim.txt'
+                    sh "if [[ -e ${env.JENKINS_HOME}/testim-results ]]; then echo 'Folder Present'; else mkdir -p ${env.JENKINS_HOME}/testim-results; fi"
+                    sh "cp testim.txt ${env.JENKINS_HOME}/testim-results"
+                    sh "cat ${env.JENKINS_HOME}/testim-results/testim.txt"
                     
                 }
                 
