@@ -28,7 +28,7 @@ pipeline {
                     sh "if [ -d ${env.JENKINS_HOME}/testim-results ]; then echo 'Folder Present'; else mkdir -p ${env.JENKINS_HOME}/testim-results; fi"
                     sh "cp testim.txt ${env.JENKINS_HOME}/testim-results"
                     sh "cat ${env.JENKINS_HOME}/testim-results/testim.txt"
-                    sh "if [[ $(< ${env.JENKINS_HOME}/testim-results/testim.txt) != 'SUCCESS' ]]; then cat stopthisprogram.txt; fi"
+                    // sh "if [[ $(< ${env.JENKINS_HOME}/testim-results/testim.txt) != 'SUCCESS' ]]; then cat stopthisprogram.txt; fi"
                     
                 }
                 
