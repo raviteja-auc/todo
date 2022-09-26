@@ -25,7 +25,7 @@ pipeline {
                     // sh "echo ${env.BUILD_NUMBER} > build-log.txt"
 
                     sh 'echo "Failed" > testim.txt'
-                    sh "if [[ -d ${env.JENKINS_HOME}/testim-results ]]; then echo 'Folder Present'; else mkdir -p ${env.JENKINS_HOME}/testim-results; fi"
+                    sh "if [ -d ${env.JENKINS_HOME}/testim-results ]; then echo 'Folder Present'; else mkdir -p ${env.JENKINS_HOME}/testim-results; fi"
                     sh "cp testim.txt ${env.JENKINS_HOME}/testim-results"
                     sh "cat ${env.JENKINS_HOME}/testim-results/testim.txt"
                     
