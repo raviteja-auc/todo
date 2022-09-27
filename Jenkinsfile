@@ -10,7 +10,7 @@ pipeline {
                     
                     sh 'npm -v'
                     
-                    sh "${env.GIT_AUTHOR} and ${env.BUILD_URL}"
+                    sh "${env.BUILD_URL}"
                     // deleteDir()
                     // checkout([$class: 'GitSCM',
                     //         branches: [[name: 'master']],
