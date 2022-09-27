@@ -9,11 +9,12 @@ pipeline {
         stage('checkout') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'ci-credentials', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                    
+                    script {
+                        committerName = sh "git show -s --format='%cn' ${env.GIT_COMMIT}"
+                    }
                     sh 'npm -v'
                     sh "git show -s --format='%cn' ${env.GIT_COMMIT} > commit.txt"
-                    sh "cat commit.txt | $committerName"
-                    sh " echo ${env.GIT_COMMITTER_NAME} ${env.GIT_COMMIT} ${currentBuild.changeSets}"
+                    sh "echo ${env.GIT_COMMITTER_NAME} ${env.GIT_COMMIT} ${currentBuild.changeSets}"
                     // deleteDir()
                     // checkout([$class: 'GitSCM',
                     //         branches: [[name: 'master']],
