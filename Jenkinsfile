@@ -12,10 +12,7 @@ pipeline {
 
                     sh " echo ${env.GIT_COMMITTER_NAME} ${env.GIT_AUTHOR_NAME} ${currentBuild.changeSets}"
                     // deleteDir()
-                    // checkout([$class: 'GitSCM',
-                    //         branches: [[name: 'master']],
-                    //         userRemoteConfigs: [[credentialsId: 'ci-credentials',
-                    //         url: 'https://github.com/raviteja-auc/todo.git']]])
+                    
                     // sh 'git config user.name "Ravi Teja Natchireddi"'
                     // sh 'git config user.email ravi@authorcafe.com'
                     // sh 'git checkout master'
