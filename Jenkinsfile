@@ -1,4 +1,13 @@
 def abc = ""
+blocks = [
+            [
+                "type": "section",
+                "text": [
+                    "type": "mrkdwn",
+                    "text": "*Ravi Teja Natchireddi*\n`commit` commit name"
+                ]
+            ]
+        ]
 
 pipeline {
     agent any
@@ -17,15 +26,7 @@ pipeline {
                     sh "chmod u+r+x committerName.sh"
                     sh "./committerName.sh > $abc"
 
-                    blocks = [
-                        [
-                            "type": "section",
-                            "text": [
-                                "type": "mrkdwn",
-                                "text": "*Ravi Teja Natchireddi*\n`commit` commit name"
-                            ]
-                        ]
-                    ]
+                    
                     // deleteDir()
                     // checkout([$class: 'GitSCM',
                     //         branches: [[name: 'master']],
