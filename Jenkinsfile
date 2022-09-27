@@ -11,8 +11,8 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'ci-credentials', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                     
                     sh 'npm -v'
-                    sh "def committerName = git show -s --format='%cn' ${env.GIT_COMMIT}"
-                    sh "echo committerName > ${committerName}"
+                    sh "git show -s --format='%cn' ${env.GIT_COMMIT} > committerName.txt"
+                    sh "cat committerName.txt > ${committerName}"
                     sh " echo ${env.GIT_COMMITTER_NAME} ${env.GIT_COMMIT} ${currentBuild.changeSets}"
                     // deleteDir()
                     // checkout([$class: 'GitSCM',
