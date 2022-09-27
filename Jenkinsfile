@@ -12,7 +12,7 @@ pipeline {
                     
                     sh 'npm -v'
                     sh "git show -s --format='%cn' ${env.GIT_COMMIT} > commit.txt"
-                    sh "cat commit.txt > $committerName"
+                    sh "$committerName"
                     sh " echo ${env.GIT_COMMITTER_NAME} ${env.GIT_COMMIT} ${currentBuild.changeSets}"
                     // deleteDir()
                     // checkout([$class: 'GitSCM',
