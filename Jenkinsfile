@@ -10,11 +10,10 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'ci-credentials', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                     script {
-                        committerName = '$(git show -s --format="%cn" "${env.GIT_COMMIT}")'
+                        committerName = "git show -s --format='%cn' ${env.GIT_COMMIT}"
                     }
                     sh 'npm -v'
                     sh "git show -s --format='%cn' ${env.GIT_COMMIT} > commit.txt"
-                    sh "echo ${env.GIT_COMMITTER_NAME} ${env.GIT_COMMIT} ${currentBuild.changeSets}"
                     echo "${committerName}"
                     // deleteDir()
                     // checkout([$class: 'GitSCM',
