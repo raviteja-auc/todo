@@ -1,4 +1,4 @@
-def committerName = "";
+
 
 pipeline {
     agent any
@@ -15,6 +15,7 @@ pipeline {
                     sh 'npm -v'
                     sh "git show -s --format='%cn' ${env.GIT_COMMIT} > commit.txt"
                     sh "echo ${env.GIT_COMMITTER_NAME} ${env.GIT_COMMIT} ${currentBuild.changeSets}"
+                    echo "${committerName}"
                     // deleteDir()
                     // checkout([$class: 'GitSCM',
                     //         branches: [[name: 'master']],
