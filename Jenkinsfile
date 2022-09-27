@@ -1,6 +1,8 @@
 pipeline {
     agent any
 
+
+
     stages {
         stage('checkout') {
             steps {
@@ -8,6 +10,7 @@ pipeline {
                     
                     sh 'npm -v'
                     
+                    sh "${env.GIT_AUTHOR} and ${env.BUILD_URL}"
                     // deleteDir()
                     // checkout([$class: 'GitSCM',
                     //         branches: [[name: 'master']],
@@ -24,13 +27,13 @@ pipeline {
                     // sh "cd /var/jenkins_home/jobs/${env.JOB_NAME}/branches/${env.BRANCH_NAME}/builds/"
                     // sh "echo ${env.BUILD_NUMBER} > build-log.txt"
 
-                    sh 'echo "Success" > testim.txt'
-                    sh "if [ -d ${env.JENKINS_HOME}/testim-results ]; then echo 'Folder Present'; else mkdir -p ${env.JENKINS_HOME}/testim-results; fi"
-                    sh "cp testim.txt ${env.JENKINS_HOME}/testim-results"
-                    sh "cat ${env.JENKINS_HOME}/testim-results/testim.txt"
-                    // sh "if [ $(< ${env.JENKINS_HOME}/testim-results/testim.txt) != 'SUCCESS' ]; then echo 'hello'; fi"
-                    sh "cat ${env.JENKINS_HOME}/testim-results/testim.txt > testim-result.txt"
-                    sh 'if [ "$(< testim-result.txt)" != "SUCCESS" ]; then error("Build failed because of this and that.."); fi'
+                    // sh 'echo "Success" > testim.txt'
+                    // sh "if [ -d ${env.JENKINS_HOME}/testim-results ]; then echo 'Folder Present'; else mkdir -p ${env.JENKINS_HOME}/testim-results; fi"
+                    // sh "cp testim.txt ${env.JENKINS_HOME}/testim-results"
+                    // sh "cat ${env.JENKINS_HOME}/testim-results/testim.txt"
+                    // // sh "if [ $(< ${env.JENKINS_HOME}/testim-results/testim.txt) != 'SUCCESS' ]; then echo 'hello'; fi"
+                    // sh "cat ${env.JENKINS_HOME}/testim-results/testim.txt > testim-result.txt"
+                    // sh 'if [ "$(< testim-result.txt)" != "SUCCESS" ]; then cat RegressionFailure.txt; fi'
                 }
                 
             }
