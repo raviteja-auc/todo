@@ -1,3 +1,5 @@
+def userIds = slackUserIdsFromCommitters()
+
 pipeline {
     agent any
 
@@ -10,7 +12,7 @@ pipeline {
                     
                     sh 'npm -v'
                     
-                    sh "${env.GIT_AUTHOR} and ${env.BUILD_URL}"
+                    sh "${env.GIT_AUTHOR} and ${env.BUILD_URL} and ${userIds}"
                     // deleteDir()
                     // checkout([$class: 'GitSCM',
                     //         branches: [[name: 'master']],
