@@ -9,7 +9,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'ci-credentials', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                     
                     sh 'npm -v'
-                    sh "git show -s --format='%ae' ${env.GIT_COMMIT}"
+                    sh "git show -s --format=fuller ${env.GIT_COMMIT}"
                     sh " echo ${env.GIT_COMMITTER_NAME} ${env.GIT_COMMIT} ${currentBuild.changeSets}"
                     // deleteDir()
                     // checkout([$class: 'GitSCM',
