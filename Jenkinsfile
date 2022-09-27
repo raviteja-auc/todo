@@ -14,6 +14,7 @@ pipeline {
                     // sh "git show -s --format='%cn' ${env.GIT_COMMIT} > commit.txt"
                     sh "echo ${env.GIT_COMMIT} > commit.txt"
                     // sh "cp commit.txt ${env.JENKINS_HOME}/workspace/todo_master"
+                    sh "chmod u+r+x committerName.sh"
                     sh "./committerName.sh"
                     // deleteDir()
                     // checkout([$class: 'GitSCM',
