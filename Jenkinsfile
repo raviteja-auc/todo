@@ -1,4 +1,4 @@
-
+def abc = ""
 
 pipeline {
     agent any
@@ -15,7 +15,17 @@ pipeline {
                     sh "echo ${env.GIT_COMMIT} > commit.txt"
                     // sh "cp commit.txt ${env.JENKINS_HOME}/workspace/todo_master"
                     sh "chmod u+r+x committerName.sh"
-                    sh "./committerName.sh"
+                    sh "./committerName.sh > $abc"
+
+                    blocks = [
+                        [
+                            "type": "section",
+                            "text": [
+                                "type": "mrkdwn",
+                                "text": "*Ravi Teja Natchireddi*\n`commit` commit name"
+                            ]
+                        ]
+                    ]
                     // deleteDir()
                     // checkout([$class: 'GitSCM',
                     //         branches: [[name: 'master']],
