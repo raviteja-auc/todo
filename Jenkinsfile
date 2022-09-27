@@ -10,7 +10,7 @@ pipeline {
                     
                     sh 'npm -v'
                     
-                    sh " echo ${env.GIT_COMMIT} ${env.GIT_COMMITTER_EMAIL}"
+                    sh " echo ${env.GIT_COMMIT} ${env.CHANGE_AUTHOR}"
                     // deleteDir()
                     // checkout([$class: 'GitSCM',
                     //         branches: [[name: 'master']],
