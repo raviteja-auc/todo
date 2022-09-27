@@ -9,8 +9,8 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'ci-credentials', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                     
                     sh 'npm -v'
-                    
-                    sh " echo ${env.GIT_COMMIT} ${currentBuild.changeSets}"
+                    checkout([$class: 'GitSCM', branches: [[name: 'master']], extensions: [[$class: 'ChangelogToBranch', options: [compareRemote: 'origin', compareTarget: 'master']]], userRemoteConfigs: [[credentialsId: 'ci-credentials', url: 'https://github.com/raviteja-auc/todo.git']]])
+                    sh " echo ${env.GIT_COMMITTER_NAME} ${currentBuild.changeSets}"
                     // deleteDir()
                     // checkout([$class: 'GitSCM',
                     //         branches: [[name: 'master']],
