@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'ci-credentials', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                
                     
                     sh 'npm -v'
 
@@ -34,7 +34,7 @@ pipeline {
                     // // sh "if [ $(< ${env.JENKINS_HOME}/testim-results/testim.txt) != 'SUCCESS' ]; then echo 'hello'; fi"
                     // sh "cat ${env.JENKINS_HOME}/testim-results/testim.txt > testim-result.txt"
                     // sh 'if [ "$(< testim-result.txt)" != "SUCCESS" ]; then cat RegressionFailure.txt; fi'
-                }
+                
                 
             }
 
