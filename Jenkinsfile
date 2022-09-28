@@ -10,9 +10,9 @@ pipeline {
             steps {
                 script {
                     env.COMMITTER_NAME = sh( script: "git show -s --format='%cn' ${env.GIT_COMMIT}", returnStdout: true).trim()
-                    def blocks = sh( script: "./committerName.sh", returnStdout: true)
+                    env.BLOCKS = sh( script: "./committerName.sh", returnStdout: true)
                     echo "COMMITTER_NAME: ${env.COMMITTER_NAME}"
-                    echo "BLOCKS: $blocks"
+                    echo "BLOCKS: ${env.BLOCKS}"
                 }
                     sh 'npm -v'
                     // sh "abc=git show -s --format='%cn' ${env.GIT_COMMIT}"
@@ -23,7 +23,7 @@ pipeline {
                     // sh "\"${abc}\"<./committerName.sh"
                     // sh "cat ./committerName.sh"
                     echo "${env.COMMITTER_NAME}"
-                    slackSend(channel: "#general", blocks: blocks)
+                    slackSend(channel: "#general", blocks: "${env.BLOCKS}")
                     
                     // deleteDir()
                     // checkout([$class: 'GitSCM',
