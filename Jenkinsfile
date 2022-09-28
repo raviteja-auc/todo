@@ -17,7 +17,7 @@ pipeline {
                     sh "chmod u+r+x committerName.sh"
                     sh "./committerName.sh > block.txt"
 
-                    slackSend(channel: "#general", blocks: $(<block.txt))
+                    slackSend(channel: "#general", blocks: $<block.txt)
                     
                     // deleteDir()
                     // checkout([$class: 'GitSCM',
