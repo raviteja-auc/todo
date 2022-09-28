@@ -8,7 +8,7 @@ blocks="blocks=[
                 'type': 'section',
                 'text': [
                     'type': 'mrkdwn',
-                    'text': \"*$committername*\n`$commit_id` commit name\"
+                    'text': \"*$committername*\n $commit_id commit name\"
                 ]
             ]
         ]"
