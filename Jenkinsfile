@@ -1,4 +1,4 @@
-// def abc = ""
+def abc = ""
 
 pipeline {
     agent any
