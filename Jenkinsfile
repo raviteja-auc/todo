@@ -16,7 +16,7 @@ pipeline {
                     // sh "cp commit.txt ${env.JENKINS_HOME}/workspace/todo_master"
                     sh "chmod u+r+x committerName.sh"
                     sh "./committerName.sh"
-                    echo $(./committerName.sh)
+                    sh "echo $(./committerName.sh)"
                     // sh "cat ./committerName.sh"
                     echo "${abc}"
                     slackSend(channel: "#general", blocks: "${abc}")
