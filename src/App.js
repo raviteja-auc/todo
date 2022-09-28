@@ -6,6 +6,7 @@ function App() {
     <div className="App">
       <header className="App-header">HI</header>
       <h1>sanjay's contribution for ravi's test on commit msgs</h1>
+      <h2>PR for dev branch of Ravi's</h2>
     </div>
   );
 }
