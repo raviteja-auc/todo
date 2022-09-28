@@ -13,8 +13,7 @@ committername=$(git show -s --format='%cn' $commit_id)
 #             ]
 #         ]"
 
-blocks="
-	\"blocks\": [
+blocks="[
 		{
 			\"type\": \"section\",
 			\"text\": {
