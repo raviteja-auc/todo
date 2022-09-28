@@ -1,13 +1,4 @@
 def abc = ""
-blocks = [
-            [
-                "type": "section",
-                "text": [
-                    "type": "mrkdwn",
-                    "text": "*Ravi Teja Natchireddi*\n`commit` commit name"
-                ]
-            ]
-        ]
 
 pipeline {
     agent any
@@ -20,12 +11,13 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'ci-credentials', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                     
                     sh 'npm -v'
-                    // sh "git show -s --format='%cn' ${env.GIT_COMMIT} > commit.txt"
+                    sh "$abc = git show -s --format='%cn' ${env.GIT_COMMIT}"
                     sh "echo ${env.GIT_COMMIT} > commit.txt"
                     // sh "cp commit.txt ${env.JENKINS_HOME}/workspace/todo_master"
                     sh "chmod u+r+x committerName.sh"
-                    sh "./committerName.sh > $abc"
+                    sh "./committerName.sh > block.txt"
 
+                    slackSend(channel: "#general", blocks: $(<block.txt))
                     
                     // deleteDir()
                     // checkout([$class: 'GitSCM',
