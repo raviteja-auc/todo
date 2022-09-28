@@ -23,7 +23,7 @@ pipeline {
                     // sh "\"${abc}\"<./committerName.sh"
                     // sh "cat ./committerName.sh"
                     echo "${env.COMMITTER_NAME}"
-                    slackSend(channel: "#general", blocks: ${env.BLOCKS})
+                    slackSend(channel: "#general", blocks: "${env.BLOCKS}")
                     
                     // deleteDir()
                     // checkout([$class: 'GitSCM',
