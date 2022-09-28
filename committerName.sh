@@ -13,7 +13,7 @@ committername=$(git show -s --format='%cn' $commit_id)
 #             ]
 #         ]"
 
-blocks="{
+blocks="
 	\"blocks\": [
 		{
 			\"type\": \"section\",
@@ -22,7 +22,6 @@ blocks="{
 				\"text\": \"*$committername*\n $commit_id commit name\"
 			}
 		}
-	]
-}"
+	]"
 
 echo $blocks
