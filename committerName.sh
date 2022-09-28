@@ -3,7 +3,7 @@
 commit_id=$(cat commit.txt)
 committername=$(git show -s --format='%cn' $commit_id)
 
-blocks = [
+blocks='[
             [
                 "type": "section",
                 "text": [
@@ -11,6 +11,6 @@ blocks = [
                     "text": "*$committername*\n`$commit_id` commit name"
                 ]
             ]
-        ]
+        ]'
 
 echo $blocks
