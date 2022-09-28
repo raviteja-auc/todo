@@ -15,9 +15,9 @@ pipeline {
                     sh "echo ${env.GIT_COMMIT} > commit.txt"
                     // sh "cp commit.txt ${env.JENKINS_HOME}/workspace/todo_master"
                     sh "chmod u+r+x committerName.sh"
-                    sh "./committerName.sh > block.txt"
-
-                    slackSend(channel: "#general", blocks: [ "$(< block.txt)" ])
+                    sh "abc=./committerName.sh"
+                    echo $abc
+                    slackSend(channel: "#general", blocks: $abc)
                     
                     // deleteDir()
                     // checkout([$class: 'GitSCM',
