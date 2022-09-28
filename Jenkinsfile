@@ -1,3 +1,5 @@
+def committerName = ""
+
 pipeline {
     agent any
 
@@ -6,11 +8,23 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'ci-credentials', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                    
+                script {
+                    env.COMMITTER_NAME = sh( script: "git show -s --format='%cn' ${env.GIT_COMMIT}", returnStdout: true).trim()
+                    env.BLOCKS = sh( script: "./committerName.sh", returnStdout: true).trim()
+                    echo "COMMITTER_NAME: ${env.COMMITTER_NAME}"
+                    echo "BLOCKS: ${env.BLOCKS}"
+                }
                     sh 'npm -v'
-
-                    sh " echo ${env.GIT_COMMITTER_NAME} ${env.GIT_COMMIT} ${currentBuild.changeSets}"
+                    // sh "abc=git show -s --format='%cn' ${env.GIT_COMMIT}"
+                    sh "echo ${env.GIT_COMMIT} > commit.txt"
+                    // sh "cp commit.txt ${env.JENKINS_HOME}/workspace/todo_master"
+                    sh "chmod u+r+x committerName.sh"
+                    //  abc = ""
+                    // sh "\"${abc}\"<./committerName.sh"
+                    // sh "cat ./committerName.sh"
+                    echo "${env.COMMITTER_NAME}"
+                    slackSend(channel: "#general", blocks: "${env.BLOCKS}")
+                    
                     // deleteDir()
                     // checkout([$class: 'GitSCM',
                     //         branches: [[name: 'master']],
@@ -34,7 +48,7 @@ pipeline {
                     // // sh "if [ $(< ${env.JENKINS_HOME}/testim-results/testim.txt) != 'SUCCESS' ]; then echo 'hello'; fi"
                     // sh "cat ${env.JENKINS_HOME}/testim-results/testim.txt > testim-result.txt"
                     // sh 'if [ "$(< testim-result.txt)" != "SUCCESS" ]; then cat RegressionFailure.txt; fi'
-                }
+                
                 
             }
 
