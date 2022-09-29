@@ -20,7 +20,7 @@ pipeline {
                         // println(commit)
                         def commitInfo = commit.getCommitInfo()
                         println(commitInfo)
-                        println(commitInfo.getCommitMessage())
+                        // println(commitInfo.getCommitMessage())
                         println(commit.getChanges())
                     }
                 }
