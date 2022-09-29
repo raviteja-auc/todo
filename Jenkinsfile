@@ -47,7 +47,7 @@ pipeline {
                         // println(commitInfo.getCommitMessage())
                         // println(commit.getChanges())
                     }
-                    slackSend(channel: "#general", blocks: """${env.BLOCKS}""")
+                    slackSend(channel: "#general", blocks: blocks)
                 }
                     // sh 'npm -v'
                     // // sh "abc=git show -s --format='%cn' ${env.GIT_COMMIT}"
