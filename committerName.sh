@@ -14,6 +14,6 @@ committermsg=$(git show -s --format='%s' $commit_id)
 #             ]
 #         ]"
 
-blocks="[ { \"type\": \"section\", \"text\": { \"type\": \"mrkdwn\", \"text\": \"*$committername*\n $commit_id $committermsg\" } } ]"
+blocks=[ { \"type\": \"section\", \"text\": { \"type\": \"mrkdwn\", \"text\": \"*$committername*\n $commit_id $committermsg\" } } ]
 
 echo $blocks
