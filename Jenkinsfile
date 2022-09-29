@@ -57,11 +57,21 @@ pipeline {
                                     "type": "section", 
                                     "text": [ 
                                         "type": "mrkdwn", 
+                                        "text": "(<${env.BUILD_URL}|${env.JOB_NAME} #${env.BUILD_NUMBER}>) is *${currentBuild.currentResult}* by ${env.GIT_URL}"
+                                    ],
+                                ],
+                                [ 
+                                    "type": "divider"
+                                ],
+                                [ 
+                                    "type": "section", 
+                                    "text": [ 
+                                        "type": "mrkdwn", 
                                         "text": "$textString" 
                                     ],
-                                ] 
+                                ]  
                             ]
-                    slackSend(color: "good", channel: "#general", message: "(<${env.BUILD_URL}|${env.JOB_NAME}-${env.BUILD_NUMBER}>) passed")
+                    // slackSend(color: "good", channel: "#general", message: "(<${env.BUILD_URL}|${env.JOB_NAME}-${env.BUILD_NUMBER}>) passed")
                     slackSend(channel: "#general", blocks: blocks)
                 }
                     // sh 'npm -v'
