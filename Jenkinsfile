@@ -32,7 +32,7 @@ pipeline {
                         ]
                     ]
                     env.COMMITTER_NAME = sh( script: "git show -s --format='%cn' ${env.GIT_COMMIT}", returnStdout: true).trim()
-                    def block = sh( script: "./committerName.sh", returnStdout: true).trim()
+                    def block = sh( script: "./committerName.sh", returnStdout: true)
                     // echo "COMMITTER_NAME: ${env.COMMITTER_NAME}"
                     // echo "BLOCKS: ${env.BLOCKS}"
 
