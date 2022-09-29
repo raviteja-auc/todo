@@ -1,5 +1,3 @@
-// def committerName = ""
-
 pipeline {
     agent any
 
