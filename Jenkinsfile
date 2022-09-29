@@ -50,7 +50,7 @@ pipeline {
                         def committerName = commitInfo.getCommitterName()
                         def commitMsg = commitInfo.getCommitMessage()
 
-                        textString += "`$commitId` $commitMsg *$committerName*\n"
+                        textString += "*$committerName* `$commitId` $commitMsg\n"
                     }
                     blocks = [ 
                                 [ 
@@ -58,7 +58,8 @@ pipeline {
                                     "text": [ 
                                         "type": "mrkdwn", 
                                         "text": "$textString" 
-                                    ] 
+                                    ],
+                                    "color": '#ff0000' 
                                 ] 
                             ]
                     slackSend(channel: "#general", blocks: blocks)
