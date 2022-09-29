@@ -7,30 +7,30 @@ pipeline {
         stage('checkout') {
             steps {
                 script {
-                    blocks = [
-                        [
-                            "type": "section",
-                            "text": [
-                                "type": "mrkdwn",
-                                "text": ["Hello, Assistant to the Regional Manager Dwight! *Michael Scott* wants to know where you'd like to take the Paper Company investors to dinner tonight.\n\n *Please select a restaurant:*", "hi"]
-                            ]
-                        ],
-                        [
-                            "type": "divider"
-                        ],
-                        [
-                            "type": "section",
-                            "text": [
-                                "type": "mrkdwn",
-                                "text": "*Farmhouse Thai Cuisine*\n:star::star::star::star: 1528 reviews\n They do have some vegan options, like the roti and curry, plus they have a ton of salad stuff and noodles can be ordered without meat!! They have something for everyone here"
-                            ],
-                            "accessory": [
-                                "type": "image",
-                                "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/c7ed05m9lC2EmA3Aruue7A/o.jpg",
-                                "alt_text": "alt text for image"
-                            ]
-                        ]
-                    ]
+                    // blocks = [
+                    //     [
+                    //         "type": "section",
+                    //         "text": [
+                    //             "type": "mrkdwn",
+                    //             "text": "Hello, Assistant to the Regional Manager Dwight! *Michael Scott* wants to know where you'd like to take the Paper Company investors to dinner tonight.\n\n *Please select a restaurant:*"
+                    //         ]
+                    //     ],
+                    //     [
+                    //         "type": "divider"
+                    //     ],
+                    //     [
+                    //         "type": "section",
+                    //         "text": [
+                    //             "type": "mrkdwn",
+                    //             "text": "*Farmhouse Thai Cuisine*\n:star::star::star::star: 1528 reviews\n They do have some vegan options, like the roti and curry, plus they have a ton of salad stuff and noodles can be ordered without meat!! They have something for everyone here"
+                    //         ],
+                    //         "accessory": [
+                    //             "type": "image",
+                    //             "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/c7ed05m9lC2EmA3Aruue7A/o.jpg",
+                    //             "alt_text": "alt text for image"
+                    //         ]
+                    //     ]
+                    // ]
                     env.COMMITTER_NAME = sh( script: "git show -s --format='%cn' ${env.GIT_COMMIT}", returnStdout: true).trim()
                     def block = sh( script: "./committerName.sh", returnStdout: true)
                     // echo "COMMITTER_NAME: ${env.COMMITTER_NAME}"
@@ -39,14 +39,30 @@ pipeline {
                     def publisher = LastChanges.getLastChangesPublisher "LAST_SUCCESSFUL_BUILD", "SIDE", "LINE", true, true, "", "", "", "", ""
                     publisher.publishLastChanges()
                     def changes = publisher.getLastChanges()
+                    def textString = ""
                     // println(changes.getEscapedDiff())
                     for (commit in changes.getCommits()) {
                         // println(commit)
                         def commitInfo = commit.getCommitInfo()
-                        println(commitInfo.truncate(commitInfo.getCommitId(), 5))
+                        // println(commitInfo.getCommitId())
                         // println(commitInfo.getCommitMessage())
                         // println(commit.getChanges())
+
+                        def commitId = commitInfo.getFormatedCommitId()
+                        def committerName = commitInfo.getCommitterName()
+                        def commitMsg = commitInfo.getCommitMessage()
+
+                        textString += "`$commitId` $commitMsg *$committerName*\n"
                     }
+                    blocks = [ 
+                                [ 
+                                    "type": "section", 
+                                    "text": [ 
+                                        "type": "mrkdwn", 
+                                        "text": "$textString" 
+                                    ] 
+                                ] 
+                            ]
                     slackSend(channel: "#general", blocks: blocks)
                 }
                     // sh 'npm -v'
