@@ -17,25 +17,27 @@ pipeline {
                     def changes = publisher.getLastChanges()
                     println(changes.getEscapedDiff())
                     for (commit in changes.getCommits()) {
-                        println(commit)
+                        // println(commit)
                         def commitInfo = commit.getCommitInfo()
-                        println(commitInfo)
-                        println(commitInfo.getCommitMessage())
-                        println(commit.getChanges())
+                        // println(commitInfo)
+                        // println(commitInfo.getCommitMessage())
+                        // println(commit.getChanges())
                     }
                 }
-                    sh 'npm -v'
-                    // sh "abc=git show -s --format='%cn' ${env.GIT_COMMIT}"
-                    sh "echo ${env.GIT_COMMIT} > commit.txt"
-                    // sh "cp commit.txt ${env.JENKINS_HOME}/workspace/todo_master"
-                    sh "chmod u+r+x committerName.sh"
-                    //  abc = ""
-                    // sh "\"${abc}\"<./committerName.sh"
-                    // sh "cat ./committerName.sh"
-                    echo "${env.COMMITTER_NAME}"
-                    lastChanges since: 'LAST_SUCCESSFUL_BUILD', format:'SIDE',matching: 'LINE'
-                    // slackSend(channel: "#general", blocks: """${env.BLOCKS}""")
+                    // sh 'npm -v'
+                    // // sh "abc=git show -s --format='%cn' ${env.GIT_COMMIT}"
+                    // sh "echo ${env.GIT_COMMIT} > commit.txt"
+                    // // sh "cp commit.txt ${env.JENKINS_HOME}/workspace/todo_master"
+                    // sh "chmod u+r+x committerName.sh"
+                    // //  abc = ""
+                    // // sh "\"${abc}\"<./committerName.sh"
+                    // // sh "cat ./committerName.sh"
+                    // echo "${env.COMMITTER_NAME}"
+                    // lastChanges since: 'LAST_SUCCESSFUL_BUILD', format:'SIDE',matching: 'LINE'
+                    // // slackSend(channel: "#general", blocks: """${env.BLOCKS}""")
                     
+
+
                     // deleteDir()
                     // checkout([$class: 'GitSCM',
                     //         branches: [[name: 'master']],
