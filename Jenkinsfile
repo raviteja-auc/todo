@@ -16,6 +16,7 @@ def getLastSuccessfulCommit() {
 def commitHashForBuild( build ) {
   def scmAction = build?.actions.find { action -> action instanceof jenkins.scm.api.SCMRevisionAction }
   return scmAction?.revision?.hash
+}
 
 pipeline {
     agent any
