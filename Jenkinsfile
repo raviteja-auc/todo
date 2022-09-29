@@ -60,7 +60,7 @@ pipeline {
                                     "type": "section", 
                                     "text": [ 
                                         "type": "mrkdwn", 
-                                        "text": "(<${env.BUILD_URL}|${env.JOB_NAME} #${env.BUILD_NUMBER}>) is *${currentBuild.currentResult}* by ${env.GIT_URL}"
+                                        "text": "(<${env.BUILD_URL}|${env.JOB_NAME} #${env.BUILD_NUMBER}>) is *${currentBuild.currentResult}*"
                                     ],
                                 ],
                                 [ 
