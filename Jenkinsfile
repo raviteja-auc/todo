@@ -1,23 +1,5 @@
 def committerName = ""
 
-def getLastSuccessfulCommit() {
-  def lastSuccessfulHash = null
-  def lastSuccessfulBuild = currentBuild.rawBuild.getPreviousSuccessfulBuild()
-  if ( lastSuccessfulBuild ) {
-    lastSuccessfulHash = commitHashForBuild( lastSuccessfulBuild )
-  }
-  return lastSuccessfulHash
-}
-
-/**
- * Gets the commit hash from a Jenkins build object, if any
- */
-@NonCPS
-def commitHashForBuild( build ) {
-  def scmAction = build?.actions.find { action -> action instanceof jenkins.scm.api.SCMRevisionAction }
-  return scmAction?.revision?.hash
-}
-
 pipeline {
     agent any
 
@@ -29,15 +11,6 @@ pipeline {
                     env.BLOCKS = sh( script: "./committerName.sh", returnStdout: true)
                     echo "COMMITTER_NAME: ${env.COMMITTER_NAME}"
                     echo "BLOCKS: ${env.BLOCKS}"
-                    def lastSuccessfulCommit = getLastSuccessfulCommit()
-                    def currentCommit = commitHashForBuild( currentBuild.rawBuild )
-                    if (lastSuccessfulCommit) {
-                        commits = sh(
-                        script: "git rev-list $currentCommit \"^$lastSuccessfulCommit\"",
-                        returnStdout: true
-                        ).split('\n')
-                        println "Commits are: $commits"
-                    }
                 }
                     sh 'npm -v'
                     // sh "abc=git show -s --format='%cn' ${env.GIT_COMMIT}"
@@ -48,7 +21,8 @@ pipeline {
                     // sh "\"${abc}\"<./committerName.sh"
                     // sh "cat ./committerName.sh"
                     echo "${env.COMMITTER_NAME}"
-                    slackSend(channel: "#general", blocks: """${env.BLOCKS}""")
+                    lastChanges since: 'LAST_SUCCESSFUL_BUILD', format:'SIDE',matching: 'LINE'
+                    // slackSend(channel: "#general", blocks: """${env.BLOCKS}""")
                     
                     // deleteDir()
                     // checkout([$class: 'GitSCM',
