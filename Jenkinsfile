@@ -21,7 +21,7 @@ pipeline {
                         def commitInfo = commit.getCommitInfo()
                         // println(commitInfo)
                         println(commitInfo.getCommitMessage())
-                        println(commit.getChanges())
+                        // println(commit.getChanges())
                     }
                 }
                     // sh 'npm -v'
