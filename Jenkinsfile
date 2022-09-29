@@ -43,7 +43,7 @@ pipeline {
                     for (commit in changes.getCommits()) {
                         // println(commit)
                         def commitInfo = commit.getCommitInfo()
-                        println(commitInfo)
+                        println(commitInfo.truncate(commitInfo.getCommitId(), 5))
                         // println(commitInfo.getCommitMessage())
                         // println(commit.getChanges())
                     }
