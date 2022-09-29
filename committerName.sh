@@ -8,4 +8,4 @@ blocks=[ [ "type": "section", "text": [ "type": "mrkdwn", "text": "*$committerna
 
 # blocks=[ { \"type\": \"section\", \"text\": { \"type\": \"mrkdwn\", \"text\": \"*$committername*\n $commit_id $committermsg\" } } ]
 
-echo $blocks
+return $blocks
