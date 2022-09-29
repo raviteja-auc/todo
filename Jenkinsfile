@@ -59,7 +59,6 @@ pipeline {
                                         "type": "mrkdwn", 
                                         "text": "$textString" 
                                     ],
-                                    "color": "#ff0000"
                                 ] 
                             ]
                     slackSend(channel: "#general", blocks: blocks)
