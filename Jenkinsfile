@@ -61,7 +61,7 @@ pipeline {
                                     ],
                                 ] 
                             ]
-                    slackSend(color: "good", channel: "#general", message: "(<${env.JOB_NAME}-${env.BUILD_NUMBER}|${env.BUILD_URL}>) passed", blocks: blocks)
+                    slackSend(color: "good", channel: "#general", message: "(<${env.JOB_NAME}-${env.BUILD_NUMBER}|${env.BUILD_URL}>) passed")
                     slackSend(channel: "#general", blocks: blocks)
                 }
                     // sh 'npm -v'
