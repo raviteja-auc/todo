@@ -50,7 +50,7 @@ pipeline {
                         def commitId = commitInfo.getFormatedCommitId()
                         def committerName = commitInfo.getCommitterName()
                         def commitMsg = commitInfo.getCommitMessage()
-                        def tempurl = "${env.GIT_URL}".substring(0..-4)
+                        def tempurl = "${env.GIT_URL}"[0..4]
                         def commiturl = "$tempurl" + "/commit/" + "$fullCommitId"
 
                         textString += "*$committerName*\n <$commiturl|`$commitId`> $commitMsg\n"
