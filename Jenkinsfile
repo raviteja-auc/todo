@@ -62,6 +62,7 @@ pipeline {
                                 ] 
                             ]
                     slackSend(color: "good", channel: "#general", message: "(<${env.JOB_NAME}-${env.BUILD_NUMBER}|${env.BUILD_URL}>) passed", blocks: blocks)
+                    slackSend(channel: "#general", blocks: blocks)
                 }
                     // sh 'npm -v'
                     // // sh "abc=git show -s --format='%cn' ${env.GIT_COMMIT}"
