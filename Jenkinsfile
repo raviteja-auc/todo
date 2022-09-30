@@ -105,6 +105,28 @@ pipeline {
                 }
             }
         }
+        stage('testim-check') {
+            steps {
+                script {
+                    env.TESTIM_RESULT = sh( script: "cat ${env.JENKINS_HOME}/testim-results/testim.txt", returnStdout: true).trim()
+                }
+                    // sh "cat ${env.JENKINS_HOME}/testim-results/testim.txt > testim-result.txt"
+                    sh "if [ ${env.TESTIM_RESULT} != 'SUCCESS' ]; then cat RegressionFailure.txt; fi"
+                
+                    // sh "cat testim.txt > testim.txt"
+                    // sh 'if [ "$(< testim.txt)" != "SUCCESS" ]; then cat RegressionFailure.txt; fi'
+            }
+
+            post {
+                success {
+                    echo 'Checkout is successful'
+                }
+
+                failure {
+                    echo "Checkout is unsuccessful"
+                }
+            }
+        }
     }
 }
 
