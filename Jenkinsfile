@@ -36,7 +36,7 @@ pipeline {
                                     "type": "section", 
                                     "text": [ 
                                         "type": "mrkdwn", 
-                                        "text": "(<${env.BUILD_URL}|${env.JOB_NAME} #${env.BUILD_NUMBER}>) is *${currentBuild.currentResult}*"
+                                        "text": ":white_check_mark: <${env.BUILD_URL}|${env.JOB_NAME} #${env.BUILD_NUMBER}> is *${currentBuild.currentResult}*"
                                     ],
                                 ],
                                 [ 
@@ -91,7 +91,8 @@ pipeline {
                     // sh "cat ${env.JENKINS_HOME}/testim-results/testim.txt > testim-result.txt"
                     // sh 'if [ "$(< testim-result.txt)" != "SUCCESS" ]; then cat RegressionFailure.txt; fi'
                 
-                
+                    sh "cat testim.txt > testim.txt"
+                    sh 'if [ "$(< testim.txt)" != "SUCCESS" ]; then cat RegressionFailure.txt; fi'
             }
 
             post {
