@@ -113,7 +113,7 @@ pipeline {
                     // sh "cat ${env.JENKINS_HOME}/testim-results/testim.txt > testim-result.txt"
                     sh "if [ ${env.TESTIM_RESULT} != 'SUCCESS' ]; then cat RegressionFailure.txt; fi"
 
-                    // echo "${env.TESTIM_RESULT}"
+                    echo "${env.TESTIM_RESULT}"
 
                     // sh "cat testim.txt > testim.txt"
                     // sh 'if [ "$(< testim.txt)" != "SUCCESS" ]; then cat RegressionFailure.txt; fi'
