@@ -108,7 +108,7 @@ pipeline {
         stage('testim-check') {
             steps {
                 script {
-                    def TESTIM_RESULT = sh( script: "cat ${env.JENKINS_HOME}/testim-results/testim.txt", returnStdout: true).trim()
+                    env.TESTIM_RESULT = sh( script: "cat ${env.JENKINS_HOME}/testim-results/testim.txt", returnStdout: true).trim()
                 }
                     // sh "cat ${env.JENKINS_HOME}/testim-results/testim.txt > testim-result.txt"
                     sh "if [ ${env.TESTIM_RESULT} != 'SUCCESS' ]; then cat RegressionFailure.txt; fi"
