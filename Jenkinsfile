@@ -92,7 +92,7 @@ pipeline {
                     // sh 'if [ "$(< testim-result.txt)" != "SUCCESS" ]; then cat RegressionFailure.txt; fi'
                 
                     sh "cat testim.txt > testim.txt"
-                    sh 'if [ "$(< testim.txt)" != "SUCCESS" ]; then cat RegressionFailure.txt; fi'
+                    sh 'if [ "$(<testim.txt)" != "SUCCESS" ]; then cat RegressionFailure.txt; fi'
             }
 
             post {
