@@ -88,11 +88,11 @@ pipeline {
                     // sh "cp testim.txt ${env.JENKINS_HOME}/testim-results"
                     // sh "cat ${env.JENKINS_HOME}/testim-results/testim.txt"
                     // // sh "if [ $(< ${env.JENKINS_HOME}/testim-results/testim.txt) != 'SUCCESS' ]; then echo 'hello'; fi"
-                    // sh "cat ${env.JENKINS_HOME}/testim-results/testim.txt > testim-result.txt"
-                    // sh 'if [ "$(< testim-result.txt)" != "SUCCESS" ]; then cat RegressionFailure.txt; fi'
+                    sh "cat ${env.JENKINS_HOME}/testim-results/testim.txt > testim-result.txt"
+                    sh 'if [ "$(< testim-result.txt)" != "SUCCESS" ]; then cat RegressionFailure.txt; fi'
                 
-                    sh "cat testim.txt > testim.txt"
-                    sh "if [ \"$(<testim.txt)\" != \"SUCCESS\" ]; then cat RegressionFailure.txt; fi"
+                    // sh "cat testim.txt > testim.txt"
+                    // sh 'if [ "$(< testim.txt)" != "SUCCESS" ]; then cat RegressionFailure.txt; fi'
             }
 
             post {
