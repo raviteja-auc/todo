@@ -111,8 +111,10 @@ pipeline {
                     env.TESTIM_RESULT = sh( script: "cat ${env.JENKINS_HOME}/testim-results/testim.txt", returnStdout: true).trim()
                 }
                     // sh "cat ${env.JENKINS_HOME}/testim-results/testim.txt > testim-result.txt"
-                    sh "if [ ${env.TESTIM_RESULT} != 'SUCCESS' ]; then cat RegressionFailure.txt; fi"
-                
+                    // sh "if [ ${env.TESTIM_RESULT} != 'SUCCESS' ]; then cat RegressionFailure.txt; fi"
+
+                    echo "${env.TESTIM_RESULT}"
+
                     // sh "cat testim.txt > testim.txt"
                     // sh 'if [ "$(< testim.txt)" != "SUCCESS" ]; then cat RegressionFailure.txt; fi'
             }
